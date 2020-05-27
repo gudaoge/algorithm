@@ -65,7 +65,7 @@ public class BinarySearchTreeIterator {
  * 3。O（h）的空间复杂度 可以联想到中序遍历过程中的节点路径
  * 因此可以猜想到
  * 利用栈保存中序遍历的路径
- * 每次调用next方法时相当于先序遍历的一次节点输出
+ * 每次调用next方法时相当于中序遍历的一次节点输出
  */
 class BSTIterator {
 
