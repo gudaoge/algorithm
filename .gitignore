@@ -1,2 +1,5 @@
 *.iml
 .idea
+all.json
+translation.json
+doc
