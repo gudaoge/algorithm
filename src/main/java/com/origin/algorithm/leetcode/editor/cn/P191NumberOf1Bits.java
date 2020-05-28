@@ -52,21 +52,37 @@ public class P191NumberOf1Bits {
      * 思路：
      * 与1进行按位与 结果为1的就是末位就是1
      * 然后进行无符号右移，直至数字为0
+     * 时间复杂度O(n)    n为int的bit位长度
      *
+     * 解法2:
+     * 每次消去一个为1的bit位
+     * 直到结果变为0
+     * 时间复杂度O(x) x为1的个数，极端情况=int的bit位长度
      */
     //leetcode submit region begin(Prohibit modification and deletion)
 public class Solution {
     // you need to treat n as an unsigned value
-    public int hammingWeight(int n) {
-        int ret = 0;
-        while (n != 0) {
-            if ((n & 1) == 1) {
+//    public int hammingWeight(int n) {
+//        //解法1
+//        int ret = 0;
+//        while (n != 0) {
+//            if ((n & 1) == 1) {
+//                ret++;
+//            }
+//            n = n >>> 1;
+//        }
+//        return ret;
+//    }
+
+        public int hammingWeight(int n) {
+            //解法2
+            int ret = 0;
+            while (n != 0) {
+                n = n & (n - 1);
                 ret++;
             }
-            n = n >>> 1;
+            return ret;
         }
-        return ret;
-    }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
