@@ -69,11 +69,12 @@ public class P1598CrawlerLogFolder {
      * 思路：
      * 模拟日志操作
      * 使用栈维护当前处于的路径
+     * 由于不需要区分栈元素，只需要栈深度
+     * 所以直接用变量保存栈深度即可
      */
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int minOperations(String[] logs) {
-        Stack<String> stack = new Stack<>();
 
         int step = 0;
         for(String log : logs) {
