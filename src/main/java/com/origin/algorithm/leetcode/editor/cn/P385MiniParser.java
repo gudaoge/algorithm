@@ -84,61 +84,61 @@ public class P385MiniParser {
      *
      */
     class Solution {
-    public NestedInteger deserialize(String s) {
-
-        Stack<NestedInteger> stack = new Stack<>();
-
-        int index = 0;
-
-        while (index < s.length()) {
-
-            char c = s.charAt(index);
-
-            //说明一个数组的开始
-            if (c == '[') {
-                NestedInteger integer = new NestedInteger();
-                if (!stack.isEmpty()) {
-                    stack.peek().add(integer);
-                }
-                stack.push(integer);
-                index++;
-                continue;
-            }
-            //说明数组结束
-            if (c == ']') {
-                NestedInteger integer = stack.pop();
-                if (stack.isEmpty()) {
-                    return integer;
-                }
-                index++;
-                continue;
-            }
-
-            if (c == ',') {
-                index++;
-                continue;
-            }
-            //开始解析数字
-            int end = index + 1;
-            while (end < s.length() && Character.isDigit(s.charAt(end))) {
-                end ++;
-            }
-            int number = Integer.parseInt(s.substring(index, end));
-
-            NestedInteger integer = new NestedInteger(number);
-
-            if (stack.isEmpty()) {
-                //不处于数组内，那结果肯定是单个数字
-                return integer;
-            } else {
-                //处于数组内
-                stack.peek().add(integer);
-            }
-            index = end;
-        }
-
-        return null;
-    }
+//    public NestedInteger deserialize(String s) {
+//
+//        Stack<NestedInteger> stack = new Stack<>();
+//
+//        int index = 0;
+//
+//        while (index < s.length()) {
+//
+//            char c = s.charAt(index);
+//
+//            //说明一个数组的开始
+//            if (c == '[') {
+//                NestedInteger integer = new NestedInteger();
+//                if (!stack.isEmpty()) {
+//                    stack.peek().add(integer);
+//                }
+//                stack.push(integer);
+//                index++;
+//                continue;
+//            }
+//            //说明数组结束
+//            if (c == ']') {
+//                NestedInteger integer = stack.pop();
+//                if (stack.isEmpty()) {
+//                    return integer;
+//                }
+//                index++;
+//                continue;
+//            }
+//
+//            if (c == ',') {
+//                index++;
+//                continue;
+//            }
+//            //开始解析数字
+//            int end = index + 1;
+//            while (end < s.length() && Character.isDigit(s.charAt(end))) {
+//                end ++;
+//            }
+//            int number = Integer.parseInt(s.substring(index, end));
+//
+//            NestedInteger integer = new NestedInteger(number);
+//
+//            if (stack.isEmpty()) {
+//                //不处于数组内，那结果肯定是单个数字
+//                return integer;
+//            } else {
+//                //处于数组内
+//                stack.peek().add(integer);
+//            }
+//            index = end;
+//        }
+//
+//        return null;
+//    }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
